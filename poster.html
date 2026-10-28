@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>홍보 포스터 · 같은 캠퍼스</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<style>
+  @page { size: A4 landscape; margin: 0; }
+  * { box-sizing: border-box; margin: 0; }
+  body { font-family: "Pretendard Variable", Pretendard, sans-serif; background: #e9e9ee; word-break: keep-all; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .bar { display: flex; gap: 10px; justify-content: center; padding: 14px; font-size: 14px; }
+  .bar a, .bar button { padding: 9px 16px; border-radius: 10px; border: 1px solid #ccd; background: #fff; color: #223; text-decoration: none; font: inherit; cursor: pointer; }
+  .sheet { width: 297mm; height: 210mm; margin: 0 auto 30px; background: #fff; position: relative; overflow: hidden; display: grid; grid-template-columns: 1.12fr 1fr; box-shadow: 0 20px 50px -20px rgba(0,0,0,.35); }
+  .sheet::before { content: ""; position: absolute; inset: 0 0 auto; height: 5mm; background: var(--primary); }
+  .sheet::after { content: ""; position: absolute; inset: auto 0 0; height: 7mm; background: var(--soft); }
+  .copy { padding: 26mm 10mm 20mm 20mm; display: flex; flex-direction: column; }
+  .eyebrow { color: var(--primary); font-weight: 800; letter-spacing: .14em; font-size: 15pt; margin-bottom: 10mm; }
+  h1 { font-size: 46pt; line-height: 1.12; letter-spacing: -.03em; color: var(--deep); font-weight: 850; margin-bottom: 7mm; }
+  .sub { font-size: 17pt; line-height: 1.5; color: #556; margin-bottom: auto; }
+  .scan { display: flex; align-items: center; gap: 8mm; }
+  .scan img { width: 52mm; height: 52mm; border-radius: 4mm; border: 1.2mm solid var(--soft); }
+  .scan b { display: block; font-size: 19pt; color: var(--deep); margin-bottom: 2mm; }
+  .scan span { font-size: 13pt; color: #667; line-height: 1.5; }
+  .art { margin: 14mm 14mm 16mm 0; border-radius: 6mm; background: center / cover no-repeat; }
+  @media print { body { background: #fff; } .bar { display: none; } .sheet { margin: 0; box-shadow: none; } }
+</style>
+</head>
+<body>
+<div class="bar"><a href="?c=minjun">민준 포스터</a><a href="?c=seoyun">서윤 포스터</a><button onclick="print()">인쇄 / PDF 저장</button></div>
+<div class="sheet">
+  <div class="copy">
+    <p class="eyebrow">SCAN &amp; MEET</p>
+    <h1 id="t"></h1>
+    <p class="sub" id="s"></p>
+    <div class="scan"><img id="qr" alt="QR 코드"><div><b>QR을 스캔해 보세요</b><span>휴대폰 카메라로 비추면<br>바로 시작돼요 · 약 3분</span></div></div>
+  </div>
+  <div class="art" id="art"></div>
+</div>
+<script>
+  const cid = new URLSearchParams(location.search).get('c') || 'minjun';
+  fetch('data/characters.json').then(r => r.json()).then(d => {
+    const c = d[cid] || d.minjun, k = d[cid] ? cid : 'minjun';
+    for (const [n, v] of Object.entries(c.theme)) document.documentElement.style.setProperty('--' + n, v);
+    t.textContent = c.title; s.textContent = c.subtitle;
+    qr.src = `assets/${k}/qr.png`; art.style.backgroundImage = `url(assets/${k}/full.webp)`;
+    document.title = `홍보 포스터 · ${c.title}`;
+  });
+</script>
+</body>
+</html>

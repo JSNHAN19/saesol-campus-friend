@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>같은 캠퍼스 · 장애학생 이해 활동</title>
+<meta name="description" content="캠퍼스 친구의 이야기를 듣고, 질문을 고르고, 함께하는 방법을 찾아보는 3분 활동">
+<meta name="theme-color" content="#2459AE">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="app" class="app">
+  <header class="top" hidden>
+    <span class="brand">같은 캠퍼스</span>
+    <ol class="progress" aria-label="진행 단계"></ol>
+    <button class="sound" type="button" aria-pressed="false" aria-label="소리 끄기">
+      <svg class="on" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9h4l5-4v14l-5-4H4z"/><path d="M16 8.5a5 5 0 0 1 0 7M18.5 6a8.5 8.5 0 0 1 0 12" fill="none"/></svg>
+      <svg class="off" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9h4l5-4v14l-5-4H4z"/><path d="M17 9l5 6M22 9l-5 6" fill="none"/></svg>
+    </button>
+  </header>
+  <main class="layout">
+    <section class="stage" aria-hidden="true" hidden>
+      <div class="bg"></div>
+      <div class="particles"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+      <div class="char"><div class="react"><div class="sway"><img alt=""></div></div></div>
+      <div class="shade"></div>
+      <div class="nametag"><b></b><span class="wave"><i></i><i></i><i></i><i></i><i></i></span></div>
+    </section>
+    <section class="panel" aria-live="polite"></section>
+  </main>
+</div>
+<script src="config.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
