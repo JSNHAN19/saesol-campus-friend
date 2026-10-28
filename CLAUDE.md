@@ -30,7 +30,7 @@ python -m http.server 8000   # http://localhost:8000/?c=minjun
 (file://로 열면 JSON fetch가 막힘)
 
 ## 진행 중 / 남은 일
-- [ ] 음성 생성: `pip install edge-tts` → `python tools/make_tts.py` → `assets/audio` 커밋. 서윤 목소리(`ko-KR-HyunsuMultilingualNeural`)가 안 되면 `edge-tts --list-voices`에서 ko-KR 남성 음성으로 교체.
+- [x] 음성 생성: `pip install edge-tts` → `python tools/make_tts.py` → `assets/audio` 커밋. 서윤 목소리(`ko-KR-HyunsuMultilingualNeural`)가 안 되면 `edge-tts --list-voices`에서 ko-KR 남성 음성으로 교체.
 - [ ] GitHub Pages 활성화 확인 (Settings → Pages → main / root)
 - [ ] 교감선생님 검토: 선택지별 피드백 문구 6개(`game.options[].note`, 콘티에 없던 추가분), 선물 지급 방식
 - [ ] 방향 확정 후 Apps Script 연결 (학교 측 구글 계정 소유로)
